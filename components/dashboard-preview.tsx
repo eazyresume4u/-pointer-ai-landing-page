@@ -10,6 +10,8 @@ export function DashboardPreview() {
           width={1160}
           height={700}
           className="w-full h-full object-cover rounded-xl shadow-lg"
+          loading="lazy"
+          quality={85}
         />
       </div>
     </div>

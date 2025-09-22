@@ -117,6 +117,8 @@ const TestimonialCard = ({ quote, name, company, avatar, type }) => {
           height={avatarSize}
           className={`w-${avatarSize / 4} h-${avatarSize / 4} ${avatarBorderRadius}`}
           style={{ border: "1px solid rgba(255, 255, 255, 0.08)" }}
+          loading="lazy"
+          quality={85}
         />
         <div className="flex flex-col justify-start items-start gap-0.5">
           <div className={nameClasses}>{name}</div>

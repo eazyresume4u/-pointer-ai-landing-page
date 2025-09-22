@@ -1,14 +1,17 @@
 import { HeroSection } from "@/components/hero-section"
 import { DashboardPreview } from "@/components/dashboard-preview"
 import { SocialProof } from "@/components/social-proof"
-import { BentoSection } from "@/components/bento-section"
-import { LargeTestimonial } from "@/components/large-testimonial"
-import { PricingSection } from "@/components/pricing-section"
-import { TestimonialGridSection } from "@/components/testimonial-grid-section"
-import { FAQSection } from "@/components/faq-section"
-import { CTASection } from "@/components/cta-section"
-import { FooterSection } from "@/components/footer-section"
 import { AnimatedSection } from "@/components/animated-section"
+import { lazy, Suspense } from "react"
+
+// Lazy load sections that are below the fold
+const BentoSection = lazy(() => import("@/components/bento-section").then(mod => ({ default: mod.BentoSection })))
+const LargeTestimonial = lazy(() => import("@/components/large-testimonial").then(mod => ({ default: mod.LargeTestimonial })))
+const PricingSection = lazy(() => import("@/components/pricing-section").then(mod => ({ default: mod.PricingSection })))
+const TestimonialGridSection = lazy(() => import("@/components/testimonial-grid-section").then(mod => ({ default: mod.TestimonialGridSection })))
+const FAQSection = lazy(() => import("@/components/faq-section").then(mod => ({ default: mod.FAQSection })))
+const CTASection = lazy(() => import("@/components/cta-section").then(mod => ({ default: mod.CTASection })))
+const FooterSection = lazy(() => import("@/components/footer-section").then(mod => ({ default: mod.FooterSection })))
 
 export default function LandingPage() {
   return (
@@ -27,33 +30,47 @@ export default function LandingPage() {
           <SocialProof />
         </AnimatedSection>
         <AnimatedSection id="features-section" className="relative z-10 max-w-[1320px] mx-auto mt-16" delay={0.2}>
-          <BentoSection />
+          <Suspense fallback={<div className="w-full h-96 bg-muted/20 animate-pulse rounded-lg" />}>
+            <BentoSection />
+          </Suspense>
         </AnimatedSection>
         <AnimatedSection className="relative z-10 max-w-[1320px] mx-auto mt-8 md:mt-16" delay={0.2}>
-          <LargeTestimonial />
+          <Suspense fallback={<div className="w-full h-64 bg-muted/20 animate-pulse rounded-lg" />}>
+            <LargeTestimonial />
+          </Suspense>
         </AnimatedSection>
         <AnimatedSection
           id="pricing-section"
           className="relative z-10 max-w-[1320px] mx-auto mt-8 md:mt-16"
           delay={0.2}
         >
-          <PricingSection />
+          <Suspense fallback={<div className="w-full h-96 bg-muted/20 animate-pulse rounded-lg" />}>
+            <PricingSection />
+          </Suspense>
         </AnimatedSection>
         <AnimatedSection
           id="testimonials-section"
           className="relative z-10 max-w-[1320px] mx-auto mt-8 md:mt-16"
           delay={0.2}
         >
-          <TestimonialGridSection />
+          <Suspense fallback={<div className="w-full h-96 bg-muted/20 animate-pulse rounded-lg" />}>
+            <TestimonialGridSection />
+          </Suspense>
         </AnimatedSection>
         <AnimatedSection id="faq-section" className="relative z-10 max-w-[1320px] mx-auto mt-8 md:mt-16" delay={0.2}>
-          <FAQSection />
+          <Suspense fallback={<div className="w-full h-96 bg-muted/20 animate-pulse rounded-lg" />}>
+            <FAQSection />
+          </Suspense>
         </AnimatedSection>
         <AnimatedSection className="relative z-10 max-w-[1320px] mx-auto mt-8 md:mt-16" delay={0.2}>
-          <CTASection />
+          <Suspense fallback={<div className="w-full h-64 bg-muted/20 animate-pulse rounded-lg" />}>
+            <CTASection />
+          </Suspense>
         </AnimatedSection>
         <AnimatedSection className="relative z-10 max-w-[1320px] mx-auto mt-8 md:mt-16" delay={0.2}>
-          <FooterSection />
+          <Suspense fallback={<div className="w-full h-32 bg-muted/20 animate-pulse rounded-lg" />}>
+            <FooterSection />
+          </Suspense>
         </AnimatedSection>
       </div>
     </div>
