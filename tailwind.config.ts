@@ -8,6 +8,15 @@ const config = {
     "./app/**/*.{ts,tsx}",
     "./src/**/*.{ts,tsx}",
     "*.{js,ts,jsx,tsx,mdx}",
+    "./public/**/*.{html,js}",
+  ],
+  safelist: [
+    // Add any dynamic classes that might be used
+    'animate-pulse',
+    'bg-primary',
+    'bg-muted',
+    'rounded-lg',
+    'shadow-lg',
   ],
   prefix: "",
   theme: {

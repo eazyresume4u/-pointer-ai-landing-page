@@ -1,9 +1,12 @@
-import AiCodeReviews from "./bento/ai-code-reviews"
-import RealtimeCodingPreviews from "./bento/real-time-previews"
-import OneClickIntegrationsIllustration from "./bento/one-click-integrations-illustration"
-import MCPConnectivityIllustration from "./bento/mcp-connectivity-illustration" // Updated import
-import EasyDeployment from "./bento/easy-deployment"
-import ParallelCodingAgents from "./bento/parallel-agents" // Updated import
+import { lazy, Suspense } from "react"
+
+// Lazy load bento components for better performance
+const AiCodeReviews = lazy(() => import("./bento/ai-code-reviews"))
+const RealtimeCodingPreviews = lazy(() => import("./bento/real-time-previews"))
+const OneClickIntegrationsIllustration = lazy(() => import("./bento/one-click-integrations-illustration"))
+const MCPConnectivityIllustration = lazy(() => import("./bento/mcp-connectivity-illustration"))
+const EasyDeployment = lazy(() => import("./bento/easy-deployment"))
+const ParallelCodingAgents = lazy(() => import("./bento/parallel-agents"))
 
 const BentoCard = ({ title, description, Component }) => (
   <div className="overflow-hidden rounded-2xl border border-white/20 flex flex-col justify-start items-start relative">
@@ -28,7 +31,9 @@ const BentoCard = ({ title, description, Component }) => (
       </div>
     </div>
     <div className="self-stretch h-72 relative -mt-0.5 z-10">
-      <Component />
+      <Suspense fallback={<div className="w-full h-full bg-muted/20 animate-pulse rounded-lg" />}>
+        <Component />
+      </Suspense>
     </div>
   </div>
 )
