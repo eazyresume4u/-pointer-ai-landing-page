@@ -14,6 +14,7 @@ export function SocialProof() {
             alt={`Company Logo ${i + 1}`}
             width={400}
             height={120}
+            sizes="(max-width: 768px) 50vw, 25vw"
             className="w-full max-w-[400px] h-auto object-contain grayscale opacity-70"
           />
         ))}
